@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+
+from transactionapp.models import Balance, Transaction
+
+
+admin.site.register(Transaction)
+admin.site.register(Balance)

@@ -1,0 +1,466 @@
+{
+	"info": {
+		"_postman_id": "e6766c8f-7081-4a2f-a617-dd64502a38e9",
+		"name": "transcation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create_transaction",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Token {{Token}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"amount\":50,\n    \"schedule\": true,\n    \"schedule_date\":\"2022-07-04\",\n    \"receipent\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/transactions/send-money/",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"transactions",
+						"send-money",
+						""
+					]
+				},
+				"description": "required fields for sending money without schedule\n*amount\n*schedule=false\n*receipent id\n\nrequired fields for sending money with schedule\n*amount\n*schedule=true\n*schedule_date\":\"2022-07-04\n*receipent id"
+			},
+			"response": [
+				{
+					"name": "success(with now)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 10,\n    \"schedule\":false,\n    \"receipent\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/transactions/send-money/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"transactions",
+								"send-money",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 04 Jul 2022 16:07:25 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.6.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "208"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 25,\n    \"amount\": 10,\n    \"type\": \"dr\",\n    \"schedule\": false,\n    \"schedule_date\": null,\n    \"status\": \"done\",\n    \"created_at\": \"2022-07-04T22:07:24.313899+06:00\",\n    \"updated_at\": \"2022-07-04T22:07:24.313938+06:00\",\n    \"sender\": 5,\n    \"receipent\": 2\n}"
+				},
+				{
+					"name": "success(with schedule)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 10,\n    \"schedule\": true,\n    \"schedule_date\":\"2022-07-04\",\n    \"receipent\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/transactions/send-money/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"transactions",
+								"send-money",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 04 Jul 2022 16:09:31 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.6.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "218"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 28,\n    \"amount\": 10,\n    \"type\": \"cr\",\n    \"schedule\": true,\n    \"schedule_date\": \"2022-07-04\",\n    \"status\": \"pending\",\n    \"created_at\": \"2022-07-04T22:09:31.363953+06:00\",\n    \"updated_at\": \"2022-07-04T22:09:31.364108+06:00\",\n    \"sender\": 5,\n    \"receipent\": 2\n}"
+				},
+				{
+					"name": "failed",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"schedule\": true,\n    \"schedule_date\":\"2022-07-04\",\n    \"receipent\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/transactions/send-money/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"transactions",
+								"send-money",
+								""
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 04 Jul 2022 16:14:03 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.6.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "17"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "\"something wrong\""
+				}
+			]
+		},
+		{
+			"name": "transaction_history",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Token {{Token}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/transactions/transaction-history/",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"transactions",
+						"transaction-history",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/transactions/transaction-history/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"transactions",
+								"transaction-history",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 04 Jul 2022 16:18:32 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.6.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "222"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"amount\": 10,\n        \"type\": \"dr\",\n        \"created_at\": \"2022-07-04T22:07:24.313899+06:00\"\n    },\n    {\n        \"amount\": 10,\n        \"type\": \"dr\",\n        \"created_at\": \"2022-07-04T22:09:31.005927+06:00\"\n    },\n    {\n        \"amount\": 0,\n        \"type\": \"dr\",\n        \"created_at\": \"2022-07-04T22:11:10.680069+06:00\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "scheduler",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}api/transactions/scheduler/",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"transactions",
+						"scheduler",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/transactions/scheduler/",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"transactions",
+								"scheduler",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 04 Jul 2022 16:19:52 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.6.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "9"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "\"success\""
+				}
+			]
+		}
+	]
+}
